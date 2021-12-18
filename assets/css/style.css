@@ -1,0 +1,391 @@
+/* thư mục assets là thư mục chứa các file tĩnh như file css, script, front chữ , *\
+/* Reset css */
+*{
+   padding: 0;
+   margin: 0;
+   /* Loại bỏ đi việc phải tính toán kích thươc bằng cách dùng  thuộc tính box-sizing */
+   box-sizing: border-box;
+
+}
+html{
+   font-family: Arial, Helvetica, sans-serif;
+   /*  Arial và Helvetica là 2 font chữ, còn sans-serif thì nó là chủng font, chứ nó không phải font chữ đâu nhá */
+   font-size: 20px;
+}
+/*  Khi làm một website cần biết 
+   1.Vị trí 
+   2.Kích thước( width,height)
+   3.Màu sắc
+   4.Kiểu dáng(Kiểu chữ, hình tròn, vuông,...)
+
+*/
+
+/*  thẻ div có display là block */
+/*  thẻ span có display là inline nhé */
+/*  Nguyên tắc thiết kế là : Làm từ ngoài vào trong, từ trên xuống dưới. */
+.clear{
+   clear: both;
+}
+.text-white{
+   color: #fff !important;
+}
+
+#main {
+
+}
+
+#header {
+   height: 46.5px;
+   background-color: black;
+   /* Cái này giúp cho thanh navigation không bị cuộn theo trang web */
+   position:fixed;
+   top:0;
+   left: 0;
+   right: 0;
+   z-index: 1;
+}
+#nav{
+   /* cái thằng nav này có display mặc định là block nên nó sẽ chiếm hết chiều rộng của header, nên 
+   cái thanh search sẽ không thể nằm cùng hàng với nav, vì vậy phải sửa nó thành inline-block */
+   display: inline-block;
+
+}
+#nav li{
+   display: inline-block;
+   position: relative;
+
+}
+#nav > li > a{
+   text-decoration: none;
+   color: white;
+   line-height: 46.5px;
+   /*  He he hôm nay lại học được thêm thuộc tính line-height: nó là gì, tức là khi m bôi đen dòng chữ bất kì, cái vùng mà xanh xanh bao quanh
+    đó chính là line-height đó, và nếu muốn nó căn giữa của navigation, thì chỉ việc cho line-height có độ cao bằng với cái nav đó thôi là được, heheh */
+   padding: 0px 24px; 
+   display: inline-block;
+   text-transform: uppercase;
+   /*  giờ chỉ việc thêm padding left và right thôi, không cần top và bottom nữa, vì line-height nó đã làm rồi */
+}
+
+#nav > li:hover >a{
+   background-color:#ccc ;
+   color: black; 
+   
+}
+.subnav{
+   display: none; 
+   position: absolute; 
+   top: 100%;
+   left: 0;
+   background-color: #fff;
+   /* thuộc tính box-shadow này là đổ bóng cho khung này */
+   box-shadow: 0 0 20px rgba(0,0,0,0.5); 
+   min-width: 160px;
+}
+.subnav li{
+   width: 100%;
+}
+#nav .subnav li a{
+   text-decoration: none;
+   color: #000;
+   line-height: 46.5px;
+   display: block; 
+   padding: 0px 30px;
+ 
+}
+#nav .subnav li:hover a{
+   background-color: #ccc;
+   
+}
+#nav > li:hover .subnav{
+   display: block;
+}
+#nav .nav-arrow-down{
+   font-size: 16px;
+}
+ #header #search{
+   float: right;
+   /* background-color: red; */
+   width:50px;
+  
+}
+#search{
+   line-height: 46.5px;
+   color: white;
+   padding: 0px 21px;
+}
+#header #search:hover{
+   background-color: #f44336;
+   /* thuộc tính cursor này là hiển thị con trỏ chuột trên màn hình theo nhiều dạng khác nhau, ví dụ như dưới đây là hình bàn tay khi di chuyển vào */
+   /* Tuy nhiên, thuộc tính cursor này cứ di chuột vào cái element được style thì nó sẽ hiện, không cần tạo thêm lớp giả */
+   cursor: pointer;
+}
+
+#slider {
+   /* Nếu header sử dụng thuộc tính position:fixed thì nó sẽ nổi hẳn lên trên, và cái phần kích chiều cao của header sẽ kh được tính, cái 
+   nên cái slider sẽ bắt đầu từ đầu trang, muốn nó bắt đầu sau header thì dùng thuộc tính dưới đây */
+   /* Để tạo được cái slider này thì đầu tiên ta tạo một cái khung để chứa ảnh đã, khung này sẽ có chiều cao luôn luôn bằng 50% so với chiều ngang của chính nó */
+   /* thì như thế, sau khi cho ảnh vào thì ảnh sẽ luôn theo cái khung  */
+   position: relative;
+   margin-top: 46.5px;
+   padding-top: 50%;
+   background: url('/Project1/assets/img/Slider/Banner.jpg') top center/ cover no-repeat;
+   /*  giải thích câu lệnh background: background image background position / background size background repeat; 
+   (cover nghĩa là nó chọn cạnh dài của bức ảnh nhưng chấp nhận việc che khuất bức ảnh)   */
+   
+}
+#slider .text-content{
+   position:absolute;
+   bottom:47px;
+   color:#fff;
+   /* Dưới này là một cách căn lề cho phần text-content ra giữa, áp dụng khi sử dụng thuộc tính position*/
+   /* left:50%;
+   transform: translateX(-50%);
+   text-align: center; */
+   /* Cách 2 để căn lề  */
+   width: 100%; /* Cái này là làm cho cái thẻ div nó rộng toàn màn hình rồi cho căn center chữ*/
+   text-align: center;
+   /* Cách 3: */
+   /* left: 0;
+   right: 0;
+   text-align: center; */
+}
+
+#slider .text-heading{
+   font-weight: 400;
+   font-size: 24px;
+}
+
+#slider .text-discription{
+   font-size: 15px;
+   margin-top: 32px;
+}
+
+/* Phần content chứa nhiều thứ khác nhau đó,  */
+#content .content-section{
+   width: 800px;
+   /* Một cách để căn giữa là ta đẩy sang trái hoặc sang phải 1 khoảng auto thì nó sẽ căn giữa cho mình */
+
+   margin-left: auto;
+   margin-right: auto;
+   padding: 64px 0;
+}
+#content .section-heading{
+   font-size: 30px;
+   text-align: center;
+   font-weight: 400;
+   letter-spacing: 4px; /* Khoảng cách giữa các chữ trong 1 từ */
+   
+}
+#content .section-sub-heading{
+   font-size: 15px;
+   text-align: center;
+   margin-top: 25px;
+   font-style: italic; /*Thuộc tính này giúp chữ in nghiêng*/
+   opacity: 0.6; /* Thuộc tính là trong suốt chữ, giá trị từ 0 đến 1 */
+
+}
+
+#content .about-text{
+   margin-top:15px;
+   font-size: 15px;
+   text-align: justify; /* Căn lề 2 bên cho đoạn văn, mặc định là nó căn trái thôi*/
+   line-height:1.4 /* Chiều cao của mỗi dòng chữ trong đoạn văn*/
+}
+#content  .member-list{
+   margin-top: 48px;
+   /* Cách 1: Để khác phục vấn đề của float */
+   overflow: hidden;
+
+}
+#content .member-item{
+   /* hai cach nay deu duoc */
+   float:left; 
+   /* display: inline-block; */
+   width: calc(100% / 3);
+   text-align: center;
+}
+#content .member-name{
+   font-size:15px;
+}
+#content .member-img{
+   width: 150px;
+   /* Thuộc tính này bo góc của ảnh */
+   border-radius: 4px;
+
+}
+/* Begin Tour-section */
+#content .tour-section{
+   background-color: #000;
+}
+
+#content .tickkets-list{
+   background-color: #fff;
+   margin-top: 40px;
+}
+#content .tickkets-list li{
+   font-size: 15px;
+   padding: 11px 16px;
+   border-bottom: 1px solid #ddd;
+   color: #757575;
+   list-style-type: none;
+}
+#content .Sold-out{
+   background-color: #f44336;
+   color: #fff;
+   padding: 4px;
+   margin-left: 16px;
+}
+#content .quanity{
+   padding: 0 8px;
+    line-height: 22.5px;
+    float: right;
+    background-color: black;
+    border-radius: 50%;
+    color: white;
+    margin-right:16px;
+    /* Có thuộc tính float thì mới dùng được margin giá trị âm nhé */
+    margin: -3px;
+}
+/* End tour section */
+
+.place-list{
+ 
+  overflow: hidden;
+  margin: 32px -8px 0 -8px;
+  padding-bottom: 32px;
+}
+
+.place-item{
+   float: left;
+   width: calc(100% / 3);
+   padding: 0 8px;
+
+}
+
+.place-item .place-img{
+   /* Chú ý 1 điều rằng thẻ ảnh sẽ không tự động co kích thước lại cho vừa với khung, khung ở đây là thẻ div
+   , vì thế muốn nó co lại cần phải xét thuộc tính width:100%, tức là nó = 100% thẻ div khung bên ngoài */
+   width: 100%; 
+   display: block;
+}
+.place-item .place-img:hover{
+   opacity: 0.6;
+   cursor: pointer;
+}
+
+.place-item .place-body{
+   background-color: #fff;
+   padding:0  16px ;
+   font-size: 15px;
+}
+
+.place-item .place-heading{
+   font-size: 15px;
+   font-weight: 600;
+}
+
+.place-item .place-time{
+   color: #757575;
+}
+
+.place-item .place-desc{
+   line-height: 1.4;
+}
+.place-item .place-heading,
+.place-item .place-time,
+.place-item .place-desc{
+   padding:  15px 0;
+
+}
+
+.place-item .place-buy-btn{
+   padding: 8px 16px;
+   color: #fff;
+   background-color: #000;
+   text-decoration: none; 
+   display: inline-block;
+   margin: 0 0 16px;
+}
+.place-item .place-buy-btn:hover{
+   background-color: #ccc;
+   color: #000;
+}
+
+.contact{
+   padding: 32px 0 ;
+}
+
+.contact-us{
+   width: 50%;
+   display: inline-block;
+}
+.contact .parent-loc{
+   padding-top: 8px;
+}
+.contact .icon-location{
+}
+
+.contact .location{
+   display: inline-block;
+   padding-left: 12px;
+}
+.contact .contact-infor{
+   width: 50%;
+   float: right;
+   display: block;
+}
+.contact-infor .name-email input{
+   /* display:inline-block; */
+   width: 50%;
+   float: left;
+   padding: 8px;
+   /* margin: 0 5% 0 0 ; */
+}
+.contact-infor #message{
+   width: 100%;
+
+}
+input{
+   border: 1px solid #ccc;
+   padding: 8px;
+   line-height: 22.5px;
+   font-size: 16px;
+}
+button{
+   padding: 8px 16px;
+   background-color: #000;
+   color: #fff;
+   margin: 16px 0 ;
+   float: right;
+}
+#slider2{
+   padding: 50%;
+   background: url('/Project1/assets/img/Slider/map.jpg') top center/ cover no-repeat;
+   /* width: 100%; */
+}
+#footer {
+   padding: 64px 16px;
+   line-height: 36px;
+   width: 100%;
+   text-align:center;
+
+}
+#footer i:hover{
+   color: #ccc;
+   cursor: pointer;
+
+}
+#footer p{
+   opacity: 0.5;
+   font-size: 16px;
+   color: #000;
+
+}
+#footer p a{
+   color: #000;
+   text-decoration:none;
+}
+
+
+
