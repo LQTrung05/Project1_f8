@@ -10,7 +10,7 @@
    <!-- vì file index.html đứng ngang cấp với thư mục assets nên là ta dùng ./ trong thẻ link để link đến thư mục đó -->
 
 </head>
-<body>
+<b>
    <div id="main">
       <div id="header">
          <!-- Begin navigation -->
@@ -42,7 +42,6 @@
          <!-- End search buttom -->
 
       </div>
-
       <div id="slider">
          <div class="text-content">
             <h2 class="text-heading">Los Angeles </h2>
@@ -60,17 +59,17 @@
 
                <div class="member-item">
                   <p class="member-name">Name</p>
-                  <img src="/Project1/assets/img/Members/bandmember1.jpg" alt="" class="member-img">
+                  <img src="./assets/img/Members/bandmember1.jpg" alt="" class="member-img">
                </div>
 
                <div class="member-item">
                   <p class="member-name">Name</p>
-                  <img src="/Project1/assets/img/Members/bandmember1.jpg" alt="" class="member-img">
+                  <img src="./assets/img/Members/bandmember1.jpg" alt="" class="member-img">
                </div>
 
                <div class="member-item">
                   <p class="member-name">Name</p>
-                  <img src="/Project1/assets/img/Members/bandmember1.jpg" alt="" class="member-img">
+                  <img src="./assets/img/Members/bandmember1.jpg" alt="" class="member-img">
                </div>
                
             </div>
@@ -101,7 +100,7 @@
                      <h3 class="place-heading">New York</h3>
                      <p class="place-time">Fri 27 Nov 2016 </p>
                      <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                     <a href="#" class="place-buy-btn">Buy Tickets</a>
+                     <button class="btn js-buy-tikets">Buy Tickets</button>
 
                   </div>
                </div>
@@ -112,7 +111,7 @@
                      <h3 class="place-heading">Paris</h3>
                      <p class="place-time">Sat 28 Nov 2016 </p>
                      <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                     <a href="#" class="place-buy-btn">Buy Tickets</a>
+                     <button class="btn js-buy-tikets">Buy Tickets</button>
                      
                   </div>
                </div>
@@ -123,7 +122,7 @@
                      <h3 class="place-heading">San Francisco</h3>
                      <p class="place-time">Sun 29 Nov 2016</p>
                      <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                     <a href="#" class="place-buy-btn">Buy Tickets</a>
+                     <button class="btn js-buy-tikets">Buy Tickets</button>
                      
                   </div>
                </div>
@@ -156,12 +155,20 @@
                <div class="contact-infor">
                   <form action="">
                      <div class="name-email">
-                        <input type="text" name="" id="name" placeholder="Name">
-                        <input type="text" name="" id="email" placeholder="Email">
+                        <div class="sub-name-email">
+                           <input type="text" name="" id="name" placeholder="Name">
+                        </div>
+                        <div class="sub-name-email">
+                           <input type="text" name="" id="email" placeholder="Email">
+                        </div>
+
                      </div>
-                     <input type="text" name="" id="message" placeholder="Message">
+                        <div class="messager-contact">
+                           <input type="text" name="" id="message" placeholder="Message">
+                        </div>
+               
                   </form>
-                  <button id="send">SEND</button>
+                  <button class="btn pull-right">SEND</button>
                </div>
             </div>
          </div>
@@ -172,7 +179,9 @@
       </div>
 
       <div id="slider2">
+         <img src="./assets/img/Slider/map.jpg" alt="">
       </div>
+
       <div id="footer">
          <i class="ti-facebook"></i>
          <i class="ti-instagram"></i>
@@ -183,7 +192,67 @@
          <p>Powered by <a href="">LiO_F8</a></p>
          
       </div>
+   </div>
+    <div class="modal js-modal">
+      <div class="modal-container js-modal-container">
+         <div class="modal-close js-modal-close">
+            <i class="ti-close"></i>
+         </div>
 
+         <header class="modal-header">
+            <i class="ti-bag bag"></i>
+            Tickets
+         </header>
 
-</body>
-</html>
+         <div class="modal-body">
+            <label for="" class="modal-lable">
+               <i class="ti-shopping-cart"></i>
+               Tickets, $15 per person
+            </label>
+            <input type="text" class="modal-input" placeholder="How many?">
+
+            <label for="" class="modal-lable">
+               <i class="ti-user"></i>
+               Send to
+            </label>
+            <input type="text" class="modal-input" placeholder="Enter email">
+            
+            <button id="buy-tickets">
+               PAY
+               <i class="ti-check"></i>
+            </button>
+         </div>
+
+         <div class="modal-footer">
+            <p class="modal-help">Need
+               <a href="">help?</a>
+            </p>
+
+         </div>
+      </div>
+   </div>
+   <script>
+      const buyBtns = document.querySelectorAll(".js-buy-tikets")
+      const modal = document.querySelector('.js-modal')
+      const modalClose = document.querySelector('.js-modal-close')
+      const modalContainer = document.querySelector('.js-modal-container')
+      function showBuyTickets() {
+         modal.classList.add('open')
+      }
+
+      function hideBuyTickets()
+      {
+         modal.classList.remove('open')
+      }
+      for(const buyBtn of buyBtns){
+         buyBtn.addEventListener('click',showBuyTickets ) // khi click vào cái nút buy tiket thì nó sẽ nghe được, bắt được sự kiện 
+         
+      }
+      modalClose.addEventListener('click',hideBuyTickets )
+
+      modal.addEventListener('click',hideBuyTickets)
+      // Cái này là ngăn chặn nổi bọt, để khi bấm vào bên trong ticket sẽ không bị remove('open')
+      modalContainer.addEventListener('click',function (event){ event.stopPropagation()})
+   </script>
+
+</html>                                             

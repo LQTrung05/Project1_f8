@@ -26,14 +26,27 @@ html{
 .clear{
    clear: both;
 }
+/* Các css dùng chung thì cho lên đầu cho đỡ nhầm lẫn */
 .text-white{
    color: #fff !important;
 }
-
-#main {
-
+.btn{
+   padding: 8px 16px;
+   color: #fff;
+   background-color: #000;
+   text-decoration: none; 
+   display: inline-block;
+   margin: 0 0 16px;
+   border: none;
 }
 
+.btn:hover{
+   background-color: #ccc;
+   color: #000;
+}
+.pull-right{
+   float: right;
+}
 #header {
    height: 46.5px;
    background-color: black;
@@ -185,7 +198,9 @@ html{
    opacity: 0.6; /* Thuộc tính là trong suốt chữ, giá trị từ 0 đến 1 */
 
 }
-
+#content{
+   padding: 64px 16px;
+}
 #content .about-text{
    margin-top:15px;
    font-size: 15px;
@@ -207,6 +222,7 @@ html{
 }
 #content .member-name{
    font-size:15px;
+   margin: 15px 0;
 }
 #content .member-img{
    width: 150px;
@@ -278,6 +294,7 @@ html{
    background-color: #fff;
    padding:0  16px ;
    font-size: 15px;
+   display: inline-block;
 }
 
 .place-item .place-heading{
@@ -299,19 +316,6 @@ html{
 
 }
 
-.place-item .place-buy-btn{
-   padding: 8px 16px;
-   color: #fff;
-   background-color: #000;
-   text-decoration: none; 
-   display: inline-block;
-   margin: 0 0 16px;
-}
-.place-item .place-buy-btn:hover{
-   background-color: #ccc;
-   color: #000;
-}
-
 .contact{
    padding: 32px 0 ;
 }
@@ -323,8 +327,7 @@ html{
 .contact .parent-loc{
    padding-top: 8px;
 }
-.contact .icon-location{
-}
+
 
 .contact .location{
    display: inline-block;
@@ -335,34 +338,28 @@ html{
    float: right;
    display: block;
 }
-.contact-infor .name-email input{
-   /* display:inline-block; */
-   width: 50%;
-   float: left;
-   padding: 8px;
-   /* margin: 0 5% 0 0 ; */
+.name-email{
+   margin-bottom: 16px;
 }
-.contact-infor #message{
-   width: 100%;
-
+.sub-name-email{
+   float: left;
+   padding-left: 16px;
+   width: 50%;
+   margin-bottom: 12px;
+}
+.messager-contact{
+   padding-left:16px ;
+   padding-bottom: 8px;
 }
 input{
    border: 1px solid #ccc;
    padding: 8px;
-   line-height: 22.5px;
-   font-size: 16px;
+   width: 100%;
+   display: block;
 }
-button{
-   padding: 8px 16px;
-   background-color: #000;
-   color: #fff;
-   margin: 16px 0 ;
-   float: right;
-}
+
 #slider2{
-   padding: 50%;
-   background: url('/Project1/assets/img/Slider/map.jpg') top center/ cover no-repeat;
-   /* width: 100%; */
+   width:100%;
 }
 #footer {
    padding: 64px 16px;
@@ -387,5 +384,99 @@ button{
    text-decoration:none;
 }
 
+.modal{
+   position: fixed;
+   /* 4 hướng bằng 0 này thì tức là cái lớp overlay này sẽ phủ toàn bộ trang web của mình */
+   top: 0;
+   right: 0;
+   left: 0;
+   bottom: 0;
+   background: rgba(0,0,0, 0.6);
+   /* padding: 100px 0 0 ; */
+   /* Hai câu lệnh dưới đây là nội dung phần FLEXBOX, nó dùng để cho phép thằng .modal-container có thể nằm giữa cái .modal */
+   display: none;
+   align-items: center; /*Thuộc tính này giúp .modal-container nằm giữa màn hình theo chiều dọc*/
+   justify-content: center;/*Thuộc tính này giúp .modal-container nằm giữa màn hình theo chiều ngang*/
+}
+.modal.open{
+   display: flex;
+}
+.modal-container{
+   background: #fff;
+   width: 900px;
+   max-width:calc( 100%-32px); /* Câu lệnh này giúp cho khi co màn hình vào thì cái tickets sẽ không bị dính sát vào lề, làm như thế sẽ xấu */
+   position: relative;
+   animation: modalFadeIn ease .3s;
+}
+.modal-close{
+   position: absolute;   
+   padding: 8px 16px;
+   font-size: 16px;
+   right: 0;
+   cursor: pointer;
+   color: #fff;
 
+}
+.modal-close:hover{
+   background-color: #ccc;
+}
+.modal-header{
+   color: #fff;
+   height: 129px;
+   padding: 32px 16px;
+   background-color: #009688;
+   letter-spacing: 4px;
+   font-size: 30px;
+   display: flex;
+   align-items: center; /*Thuộc tính này giúp .modal-container nằm giữa màn hình theo chiều dọc*/
+   justify-content: center;
+}
+.modal-header .bag{
+   margin-right: 16px;
+}
 
+.modal-body{  
+   padding: 16px;
+}
+.modal-body .modal-lable{
+   display: block;
+   margin: 15px 0;
+}
+
+.modal-body .modal-input{
+   /* padding: 8px; */
+   width: 100%;
+  
+}
+.modal-body #buy-tickets{
+   width: 100%;
+   margin: 16px 0;
+   padding: 12px;
+   background-color: #009688 ;
+   border: none;
+}
+.modal-body #buy-tickets:hover{
+   cursor: pointer;
+   background: chocolate;
+   color: #fff;
+}
+.modal-footer .modal-help{
+   float: right;
+   margin: 16px;
+}
+.modal-footer .modal-help a{
+   color: #2196F3;
+}
+/*Đây là một kiểu giống như animation trong hoạt hình vậy, nếu áp dụng cái @keyframes này thì 
+ cái tickets sẽ di chuyển từ trên xuống */
+@keyframes modalFadeIn {
+   from{
+      opacity: 0;
+      transform: translateY(-100px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+
+}
